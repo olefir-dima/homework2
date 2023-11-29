@@ -1,7 +1,7 @@
 function runPart1() {
   let userName = prompt("Hello! What is your name?", "");
 
-  if (userName === null || userName === "") {
+  if (userName === null || userName.trim() === "") {
     alert("Canceled or nothing entered. Try again.");
   } else {
     alert("Hello, " + userName + "! How are you?");
@@ -94,7 +94,7 @@ function runPart4() {
 //helper
 function askForNumber(promptMessage) {
   let input = prompt(promptMessage);
-  if (input === null) {
+  if (input === null || input.trim() === "") {
     showCanceledAlert();
     input = askForNumber(promptMessage);
   }
