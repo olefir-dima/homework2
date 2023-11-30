@@ -1,5 +1,5 @@
 function runPart1() {
-  let userName = prompt("Hello! What is your name?", "");
+  const userName = prompt("Hello! What is your name?", "");
 
   if (userName === null || userName.trim() === "") {
     alert("Canceled or nothing entered. Try again.");
@@ -9,9 +9,9 @@ function runPart1() {
 }
 
 function runPart2() {
-  let firstArg = askForNumber("Enter the first argument:");
+  const firstArg = askForNumber("Enter the first argument:");
 
-  let operation = prompt("Enter the operation (+, -, *, /):");
+  const operation = prompt("Enter the operation (+, -, *, /):");
   if (
     operation !== "+" &&
     operation !== "-" &&
@@ -20,7 +20,7 @@ function runPart2() {
   ) {
     alert("Invalid input. Possible values: +, -, *, or /. Please try again.");
   } else {
-    let secondArg = askForNumber("Enter the second argument:");
+    const secondArg = askForNumber("Enter the second argument:");
 
     switch (operation) {
       case "+":
@@ -47,12 +47,12 @@ function runPart2() {
 }
 
 function runPart3() {
-  let firstArg = prompt("Enter the first argument:");
+  const firstArg = prompt("Enter the first argument:");
   if (firstArg === null) {
     showCanceledAlert();
     return;
   }
-  let secondArg = prompt("Enter the second argument:");
+  const secondArg = prompt("Enter the second argument:");
   if (secondArg === null) {
     showCanceledAlert();
     return;
@@ -67,13 +67,12 @@ function runPart4() {
     !arg ||
     isNaN(arg) ||
     !Number.isInteger(Number(arg)) ||
-    (arg.toString().length !== 5 && arg.toString().length !== 6) ||
-    (arg[0] === "0" && arg[1] !== "-")
+    String(Math.abs(arg)).length !== 5
   ) {
     alert("Bad value. Not a number. Please try again.");
     return;
   }
-  let digits = [];
+  const digits = [];
   let isNegative = false;
 
   if (arg < 0) {
@@ -82,7 +81,7 @@ function runPart4() {
   }
 
   for (let i = 0; i < 5; i++) {
-    let digit = arg % 10;
+    const digit = arg % 10;
     digits.push(digit);
     arg = Math.floor(arg / 10);
   }
@@ -98,7 +97,7 @@ function askForNumber(promptMessage) {
     showCanceledAlert();
     input = askForNumber(promptMessage);
   }
-  let inputNum = Number(input);
+  const inputNum = Number(input);
   if (!isValidNumber(inputNum)) {
     alert("Bad value. Please try again.");
     return askForNumber(promptMessage);
